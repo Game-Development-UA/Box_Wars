@@ -33,6 +33,7 @@ public class RobotTestScriptFree : MonoBehaviour {
 
 		if (jumpTimer > 0.5) jumpTimer -= Time.deltaTime;
 			else if (anim.GetBool ("Jumping") == true) anim.SetBool ("Jumping", false);
+            
 
 	}
 }
