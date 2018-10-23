@@ -1,40 +1,83 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
+//[RequireComponent(typeof(AudioSource))]
 public class MC_movement : MonoBehaviour {
+    public KeyCode moveL;
+    public KeyCode moveR;
+    public int lanenum = 2;
+    public string controlLocked = "n";
 
-	private Animator anim;
-	private float jumpTimer = 0;
+    //death particle
+    public Transform boomObj;
 
-	void Start () {
-	
-		anim = this.gameObject.GetComponent<Animator> ();
+    public float hvelocity = 0;
+    // Use this for initialization
+    void Start () {
+        GetComponent<Rigidbody>().velocity = new Vector3(0, GM.vertVel, 4);
+    }
+    
+    // Update is called once per frame
+    void Update () {
+        GetComponent<Rigidbody>().velocity = new Vector3 (hvelocity, GM.vertVel , 4);
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-		//Controls the Input for running animations
-		// 1: walk
-		//2: Run
-		//3: Jump
-			
-		if(Input.GetKey("2")) anim.SetInteger("Speed", 14);
-			else if(Input.GetKey("1")) anim.SetInteger("Speed", 14);
-				else anim.SetInteger("Speed", 14);
+        if (Input.GetKeyDown (moveL) && (lanenum > 1) && (controlLocked == "n")){
+            hvelocity = -2;//move left
+            StartCoroutine (stopSlide ());
+            lanenum -= 1;
+            controlLocked = "y";
+        }
 
-		if (Input.GetKey ("3")) {
+        if (Input.GetKeyDown (moveR) && (lanenum < 3) && (controlLocked == "n")){
+            hvelocity = 2;//move left
+            StartCoroutine (stopSlide ());
+            lanenum += 1;
+            controlLocked = "y";
+        }
+    }
 
-			jumpTimer = 1;
-			anim.SetBool ("Jumping", true);
+    void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Lethal") {
+            Destroy (gameObject);
+            GM.zVelAdj = 0;
+            Instantiate(boomObj, transform.position, boomObj.rotation);
+            GM.lvlCompStatus = "Fail!";
+        }
+        if (other.gameObject.name == "Powerup(Clone)" || other.gameObject.name == "Powerup") {
+            Destroy(other.gameObject);
+            //add powerup effects
+        }
+    }
 
-			}
+    void OnTriggerEnter(Collider other){
+        //vertical movement on ramp
+        if (other.gameObject.name == "RampBotTrigger") {
+            GM.vertVel = 1.7f;
+        }
+        // stop vert movement after ramp
+        if (other.gameObject.name == "RampTopTrigger") {
+            GM.vertVel = 0;
+        }
+        //loads lvl complete scene when you hit exit collider
+        if (other.gameObject.name == "Exit(Clone)") {
+            SceneManager.LoadScene ("LevelComplete");
+            GM.lvlCompStatus = "Success!";
+        }
+        //picks up coins
+        if (other.gameObject.name == "Coin(Clone)" || other.gameObject.name == "Coin") {
+            Destroy(other.gameObject);
+            GM.coinTotal += 1;
+        }
 
-		if (jumpTimer > 0.5) jumpTimer -= Time.deltaTime;
-			else if (anim.GetBool ("Jumping") == true) anim.SetBool ("Jumping", false);
-            
+    }
 
-	}
+    IEnumerator stopSlide() {
+        yield return new WaitForSeconds(.5f);
+        hvelocity = 0;
+        controlLocked = "n";
+    }
 }
