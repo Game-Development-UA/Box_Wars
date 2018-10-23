@@ -20,9 +20,9 @@ public class RobotTestScriptFree : MonoBehaviour {
 		//2: Run
 		//3: Jump
 			
-		if(Input.GetKey("2")) anim.SetInteger("Speed", 2);
-			else if(Input.GetKey("1")) anim.SetInteger("Speed", 1);
-				else anim.SetInteger("Speed", 0);
+		if(Input.GetKey("2")) anim.SetInteger("Speed", 14);
+			else if(Input.GetKey("1")) anim.SetInteger("Speed", 14);
+				else anim.SetInteger("Speed", 14);
 
 		if (Input.GetKey ("3")) {
 
