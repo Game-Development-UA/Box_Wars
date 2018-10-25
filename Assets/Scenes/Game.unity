@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 7c79b0cb2ecdd104e8afe8869884ef61, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e8bc3c3fbc7bbe849bdd0a3f5c7165f2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17968604, g: 0.19910774, b: 0.24810779, a: 1}
+  m_IndirectSpecularColor: {r: 0.1258601, g: 0.16921136, b: 0.2657139, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -837,7 +837,7 @@ Prefab:
     - target: {fileID: 114620909739510882, guid: 3f280bc7d5eb34143b9a070586292ce2,
         type: 2}
       propertyPath: horizMoveSpeed
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 54039778669343598, guid: 3f280bc7d5eb34143b9a070586292ce2,
         type: 2}
