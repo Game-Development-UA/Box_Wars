@@ -11,6 +11,7 @@ public class MC_movement : MonoBehaviour {
 	public float horizMoveSpeed;
     public int lanenum = 2;
     public string controlLocked = "n";
+    public float jumppower;
 
     public Rigidbody body;
 
