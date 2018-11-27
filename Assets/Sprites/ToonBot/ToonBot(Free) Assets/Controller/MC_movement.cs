@@ -14,7 +14,7 @@ public class MC_movement : MonoBehaviour {
     public float jumppower;
 
     public Rigidbody body;
-
+    
     //death particle
     public Transform boomObj;
 
@@ -42,7 +42,8 @@ public class MC_movement : MonoBehaviour {
         //     controlLocked = "y";
         // }
     }
-
+    
+    
     void FixedUpdate() {
     	body.velocity = new Vector3( horiz, body.velocity.y, moveSpeed );
     }
@@ -87,4 +88,11 @@ public class MC_movement : MonoBehaviour {
     //     hvelocity = 0;
     //     controlLocked = "n";
     // }
+    private void Update(){
+    bool jump = Input.GetButtonDown("Jump");
+    if (jump){
+        man_move.AddForce(new Vector2(0f,jumppower),ForceMode2D.Impulse);
+    }
+    }
+    
 }
