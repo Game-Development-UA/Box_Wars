@@ -91,8 +91,7 @@ public class MC_movement : MonoBehaviour {
     private void Update(){
     bool jump = Input.GetButtonDown("Jump");
     if (jump){
-        man_move.AddForce(new Vector2(0f,jumppower),ForceMode2D.Impulse);
+        man_move.AddForce(new Vector3(0f,jumppower),ForceMode.Impulse);
+        }
     }
-    }
-    
 }
