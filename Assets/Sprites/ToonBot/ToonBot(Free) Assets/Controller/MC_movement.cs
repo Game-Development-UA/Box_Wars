@@ -88,10 +88,10 @@ public class MC_movement : MonoBehaviour {
     //     hvelocity = 0;
     //     controlLocked = "n";
     // }
-    private void Update(){
-    bool jump = Input.GetButtonDown("Jump");
-    if (jump){
-        man_move.AddForce(new Vector3(0f,jumppower),ForceMode.Impulse);
-        }
-    }
+ //   private void Update(){
+ //   bool jump = Input.GetButtonDown("Jump");
+  //  if (jump){
+  //      man_move.AddForce(new Vector3(0f,jumppower),ForceMode.Impulse);
+  //     }
+  //  }
 }
