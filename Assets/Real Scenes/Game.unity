@@ -2531,6 +2531,11 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114620909739510882, guid: 3f280bc7d5eb34143b9a070586292ce2,
+        type: 2}
+      propertyPath: jumppower
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f280bc7d5eb34143b9a070586292ce2, type: 2}
   m_IsPrefabAsset: 0
@@ -7616,9 +7621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd60d4ad538bef48a943fd5c6fb06a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefabs:
-  - {fileID: 841598405}
-  - {fileID: 1796780055}
+  tilePrefabs: []
 --- !u!4 &1856236710
 Transform:
   m_ObjectHideFlags: 0
